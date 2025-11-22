@@ -17,6 +17,7 @@ $data = $result->fetch_assoc();
     <title>Editar Resultado</title>
     <link rel="shortcut icon" href="../assets/img/ui/logo.svg" type="image/x-icon">
     <link rel="stylesheet" href="../assets/css/editar.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
     <?php require_once '../include/header.php'; ?>
@@ -33,9 +34,29 @@ $data = $result->fetch_assoc();
             <label for="nota">Nota</label>
             <input type="number" id="nota" name="nota" value="<?php echo $data['pontuacao']; ?>">
         </div>
-            <button type="submit">Salvar</button>
+            <button type="button" id="finalizar" onclick="confirmarEdicao()">Salvar</button>
         </form>
     </main>
+    <script>
+        const form = document.querySelector('form');
+
+        function confirmarEdicao(){
+            Swal.fire({
+                title: "Confirmar Edição?",
+                text: "Deseja salvar as alterações feitas?",
+                icon: "question",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Sim, salvar!",
+                cancelButtonText: "Cancelar"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit();
+                }
+            });
+        }
+    </script>
     <?php require_once '../include/message.php'; ?>
     <?php require_once '../include/footer.php'; ?>
 </body>

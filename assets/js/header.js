@@ -1,33 +1,34 @@
 function link(item) {
-    if (item === 1) {
-        if (window.location.pathname.endsWith('index.php') || window.location.pathname.endsWith('/')) {
-            window.location.reload();
-        } else {
-            window.location.href = '../index.php';
-        }
-    } else if (item === 2) {
-        if (window.location.pathname.endsWith('index.php') || window.location.pathname.endsWith('/')) {
-            window.location.href = 'pages/cadastro.php';
-        } else {
-            window.location.href = 'cadastro.php';
-        }
-    } else if (item === 3) {
-        if (window.location.pathname.endsWith('index.php') || window.location.pathname.endsWith('/')) {
-            window.location.href = 'pages/login.php';
-        } else {
-            window.location.href = 'login.php';
-        }
-    } else if (item === 4) {
-        if (window.location.pathname.endsWith('index.php') || window.location.pathname.endsWith('/')) {
-            window.location.href = 'pages/prova.php';
-        } else {
-            window.location.href = 'prova.php';
-        }
-    } else if (item === 5) {
-        if (window.location.pathname.endsWith('index.php') || window.location.pathname.endsWith('/')) {
-            window.location.href = 'pages/resultado.php';
-        } else {
-            window.location.href = 'resultado.php';
-        }
+    const isRoot = window.location.pathname.endsWith('index.php') || window.location.pathname.endsWith('/');
+
+    switch (item) {
+        case 1:
+            if (isRoot) {
+                window.location.reload();
+            } else {
+                window.location.href = '../index.php';
+            }
+            break;
+        case 2:
+            window.location.href = isRoot ? 'pages/cadastro.php' : 'cadastro.php';
+            break;
+        case 3:
+            window.location.href = isRoot ? 'pages/login.php' : 'login.php';
+            break;
+        case 4:
+            window.location.href = isRoot ? 'pages/prova.php' : 'prova.php';
+            break;
+        case 5:
+            window.location.href = isRoot ? 'pages/resultado.php' : 'resultado.php';
+            break;
+        default:
+            break;
     }
+}
+function sideBar() {
+    const sideBar = document.getElementById('sidebar');
+    const protecao = document.getElementById('protecao');
+
+    sideBar.classList.toggle('ativo');
+    protecao.classList.toggle('protecaoAtiva');
 }

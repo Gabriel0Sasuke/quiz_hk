@@ -1,51 +1,83 @@
 <?php
-$baseUrl = '/quiz/';
+$baseUrl = '/quiz_hk/';
+
+if (!isset($_SESSION['message'])) {
+    return;
+}
+
+$msg_id = $_SESSION['msg_id'] ?? -1;
+$input_target = '';
+$icon = 'error';  
+$title = 'Ops!';
+
+switch ($msg_id) {
+    case 0:
+        $input_target = 'email';
+        break;
+    case 1:
+        $input_target = 'password';
+        break;
+    case 2:
+        $input_target = 'confirm-password';
+        break;
+    case 3:
+        $icon = 'success';
+        $title = 'Sucesso!';
+        break;
+}
+
+$mensagem = $_SESSION['message'];
 ?>
-<link rel="stylesheet" href="<?php echo $baseUrl; ?>assets/css/message.css">
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<style>
+    .input-error {
+        border: 2px solid #dc3545 !important;
+        box-shadow: 0 0 5px rgba(220, 53, 69, 0.5);
+        animation: shake 0.5s; 
+    }
+    
+    @keyframes shake {
+        0% { transform: translateX(0); }
+        25% { transform: translateX(-5px); }
+        50% { transform: translateX(5px); }
+        75% { transform: translateX(-5px); }
+        100% { transform: translateX(0); }
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        Swal.fire({
+            icon: '<?php echo $icon; ?>',
+            title: '<?php echo $title; ?>',
+            text: '<?php echo $mensagem; ?>',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Entendi'
+        });
+
+        <?php if (!empty($input_target)): ?>
+            const inputAlvo = document.getElementById('<?php echo $input_target; ?>');
+            const labelAlvo = document.getElementById('label<?php echo $input_target; ?>');
+
+            if (inputAlvo) {
+                inputAlvo.classList.add('input-error');
+                
+                inputAlvo.addEventListener('focus', function() {
+                    this.classList.remove('input-error');
+                    if(labelAlvo) labelAlvo.style.color = ''; 
+                });
+            }
+            
+            if (labelAlvo) {
+                labelAlvo.style.color = '#dc3545';
+            }
+        <?php endif; ?>
+    });
+</script>
+
 <?php
- if (isset($_SESSION['message'])) {
-    if($_SESSION['msg_id'] == 1){
-        echo "<style>
-            #password {
-                border: 2px solid red !important;
-            }
-            #labelpassword {
-                color: red !important;
-            }
-        </style>";
-    }else if($_SESSION['msg_id'] == 2){
-        echo "<style>
-            #confirm-password {
-                border: 2px solid red !important;
-            }#labelconfirm-password {
-                color: red !important;
-            }
-        </style>";
-    }else if($_SESSION['msg_id'] == 0){
-        echo "<style>
-            #email {
-                border: 2px solid red !important;
-            }
-            #labelemail {
-                color: red !important;
-            }
-        </style>";
-    }else if($_SESSION['msg_id'] == 3){
-        echo "<style>
-            .message {
-                background-color: #4BB543 !important;
-                color: white !important;
-            }
-        </style>";
-}}
-if (isset($_SESSION['message'])){ ?>
-            <div class="message" onclick="fecharPopup()">
-                <?php
-                    echo $_SESSION['message'];
-                ?>
-                <p>CLIQUE EM QUALQUER LUGAR PARA FECHAR</p>
-            </div> <?php } 
-            unset($_SESSION['message']);
-            unset($_SESSION['msg_id']);
+unset($_SESSION['message']);
+unset($_SESSION['msg_id']);
 ?>
-<script src="<?php echo $baseUrl?>assets/js/message.js"></script>

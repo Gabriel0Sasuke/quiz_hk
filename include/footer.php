@@ -1,5 +1,5 @@
 <?php
-$baseUrl = '/quiz/';
+$baseUrl = '/quiz_hk/';
 ?>
 
 <link rel="stylesheet" href="<?= $baseUrl ?>assets/css/footer.css">

@@ -60,18 +60,3 @@
     <?php require_once '../include/footer.php'; ?>
 </body>
 </html>
-
-<?php
-unset($_SESSION['resposta1']);
-unset($_SESSION['resposta2']);
-unset($_SESSION['resposta3']);
-unset($_SESSION['resposta4']);
-unset($_SESSION['resposta5']);
-unset($_SESSION['resposta6']);
-unset($_SESSION['resposta7']);
-unset($_SESSION['resposta8']);
-unset($_SESSION['resposta9']);
-unset($_SESSION['resposta10']);
-unset($_SESSION['score']);
-unset($_SESSION['msg-id']);
-?>

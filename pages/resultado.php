@@ -16,6 +16,7 @@ $resultados = $stmt->get_result();
     <title>Resultados</title>
     <link rel="shortcut icon" href="../assets/img/ui/logo.svg" type="image/x-icon">
     <link rel="stylesheet" href="../assets/css/resultado.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
     <?php require_once '../include/header.php'; ?>
@@ -34,12 +35,82 @@ $resultados = $stmt->get_result();
             <td><?php echo $row['nome_completo']; ?></td>
             <td><?php echo $row['nota']; ?></td>
             <td><?php echo $row['data']; ?></td>
-            <td><a href="editar.php?id=<?php echo $row['id_prova']; ?>"><button class="btn">Editar</button></a></td>
-            <td><a href="../scripts/deletar.php?id=<?php echo $row['id_prova']; ?>"><button class="btn">Deletar</button></a></td>
+            <td><button class="btn" onclick="window.location.href = 'editar.php?id=<?php echo $row['id_prova']; ?>'">Editar</button></td>
+            <td><button class="btn" onclick="confirmarDelete(<?php echo $row['id_prova']; ?>)">Deletar</button></td>
         </tr>
         <?php } ?>
     </table>
     </main>
     <?php require_once '../include/footer.php'; ?>
+
+    <script>
+        function confirmarDelete(id){
+            Swal.fire({
+  title: "Tem certeza?",
+  text: "Você não poderá reverter isso!",
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#3085d6",
+  cancelButtonColor: "#d33",
+  confirmButtonText: "Sim, deletar!",
+  cancelButtonText: "Cancelar"
+}).then((result) => {
+  if (result.isConfirmed) {
+    window.location.href = "../scripts/deletar.php?id=" + id;
+  }
+});
+        }
+    </script>
+    <script>
+        <?php if(isset($_SESSION['msg_id'])) { 
+            $msg_id = $_SESSION['msg_id'];
+            unset($_SESSION['msg_id']);
+            switch($msg_id){
+                case -1:
+                    echo 
+                    'Swal.fire({
+                        title: "Sucesso!",
+                        text: "Edição realizada com sucesso.",
+                        icon: "success"
+                    });';
+                    break;
+                case 0:
+                    echo   
+                    'Swal.fire({
+                        title: "Sucesso!",
+                        text: "Resultado Deletado com sucesso.",
+                        icon: "success"
+                    });';
+                    break;
+                case 1:
+                    echo 'Swal.fire({
+                        title: "Erro!",
+                        text: "ID do resultado não fornecido.",
+                        icon: "error"
+                    });';
+                    break;
+                case 2:
+                    echo 'Swal.fire({
+                        title: "Erro!",
+                        text: "Erro ao deletar o resultado.",
+                        icon: "error"
+                    });';
+                    break;
+                case 3:
+                    echo 'Swal.fire({
+                        title: "Erro!",
+                        text: "Erro ao atualizar o resultado.",
+                        icon: "error"
+                    });';
+                    break;
+                default:
+                    echo 'Swal.fire({
+                        title: "Erro!",
+                        text: "Ocorreu um erro desconhecido.",
+                        icon: "error"
+                    });';
+            }
+        } ?>
+    </script>
 </body>
 </html>

@@ -38,7 +38,7 @@ session_start();
             <input type="password" id="confirm-password" name="confirm-password" required minlength="8">
         </div>
 
-            <button type="submit">Cadastrar</button>
+            <button type="submit" id="finalizar">Cadastrar</button>
         </form>
     </main>
     <?php require_once '../include/message.php'; ?>
