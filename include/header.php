@@ -3,7 +3,6 @@ $baseUrl = '/quiz_hk/';
 ?>
 
 <link rel="stylesheet" href="<?= $baseUrl ?>assets/css/header.css">
-
 <header>
 	<img src="<?= $baseUrl ?>assets/img/ui/logo.svg" alt="Logo" draggable="false" oncontextmenu="return false;" id="logo">
 	<h1 id="site-title">Quiz de Hollow Knight</h1>

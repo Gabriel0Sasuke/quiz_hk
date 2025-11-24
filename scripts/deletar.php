@@ -14,8 +14,8 @@ $sql = "DELETE FROM provas WHERE id = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $id);
 $stmt->execute();
-if($stmt->affected_rows > 0){
-    $_SESSION['msg_id'] = 0;
+        if($stmt->affected_rows > 0){
+            $_SESSION['msg_id'] = 0;
         }else{
             throw new Exception("Nenhum registro encontrado para deletar.");
         }

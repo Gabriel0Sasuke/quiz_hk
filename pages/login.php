@@ -25,13 +25,13 @@ session_start();
             <label for="password" id="labelpassword">Senha</label>
             <input type="password" id="password" name="password" required>
         </div>
-            <button type="submit">Fazer Login</button>
+            <button type="submit" id="finalizar">Fazer Login</button>
         </form>
         <?php } else { ?>
            <div id="erro">
             <h2 id="titulo">Você já está logado!</h2>
-            <button onclick="location.href='../index.php'">Ir para o Início</button>
-            <button onclick="location.href='../scripts/logout.php'">Deslogar</button>
+            <button id="finalizar" onclick="location.href='../index.php'">Ir para o Início</button>
+            <button id="finalizar" onclick="location.href='../scripts/logout.php'">Deslogar</button>
            </div>
         <?php } ?>
     </main>

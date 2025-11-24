@@ -92,7 +92,7 @@ INSERT INTO localizacao_npc (npc_id, area_id) VALUES
 (3, 2),
 (5, 3),
 (5, 2);
-INSERT INTO amuletos (amu_nome, amu_slot, amu_descricao, npc_id) VALUES 
+INSERT INTO amuletos (amu_nome, amu_slot, amu_descricao, npc_id) VALUES
 ('Fúria dos Caídos', 2, 'Aumenta o dano quando está com 1 vida.', null),
 ('Bússola Caprichosa', 1, 'Mostra a localização do jogador no mapa.', 2),
 ('Pedra do Xamã', 3, 'Aumenta o poder e tamanho dos feitiços.', 4),

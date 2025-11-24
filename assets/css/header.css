@@ -75,7 +75,7 @@ header{
     top: 0vh;
     right: -30vw;
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
-    transition: all 0.3s ease-in-out;
+    transition: all 0.6s ease-in-out;
     z-index: 2000;
     text-align: center;
     color: #e0e0e0;

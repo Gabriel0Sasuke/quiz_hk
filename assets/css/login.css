@@ -49,7 +49,7 @@ label{
     font-size: 1em;
     margin-bottom: 0.5vh;
 }
-button{
+#finalizar{
     width: 48vw;
     height: 6vh;
     border: none;
@@ -66,12 +66,12 @@ input:focus {
     background-color: #3b4452; 
     box-shadow: 0 0 10px rgba(154, 223, 244, 0.3); 
 }
-button:hover {
+#finalizar:hover {
     background-color: #c0f0ff;
     transform: translateY(-2px);
     box-shadow: 0 4px 10px rgba(154, 223, 244, 0.2);
 }
-button:focus {
+#finalizar:focus {
     outline: 2px solid #ffffff;
     outline-offset: 2px;
 }
