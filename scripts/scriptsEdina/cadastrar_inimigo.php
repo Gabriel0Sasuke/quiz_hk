@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once '../caminho.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     require_once '../connection.php';
 
@@ -24,10 +25,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } finally {
         $stmt->close();
         $conn->close();
-        header("Location: ../../pages/paginasEdina/cadastro_inimigo.php");
+        header("Location: " . $baseUrl . "pages/paginasEdina/cadastro_inimigo.php");
         exit();
     }
 } else {
-    header("Location: ../../pages/paginasEdina/cadastro_inimigo.php");
+    header("Location: " . $baseUrl . "pages/paginasEdina/cadastro_inimigo.php");
     exit();
 }

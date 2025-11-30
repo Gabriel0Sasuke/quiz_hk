@@ -1,4 +1,25 @@
-let baseURL = window.location.origin + '/quiz_hk/';
+function detectBaseURL() {
+    const path = window.location.pathname;
+    
+    if (path.includes('/pages/paginasEdina/')) {
+        const parts = path.split('/pages/paginasEdina/')[0];
+        return window.location.origin + parts + '/';
+    }
+    else if (path.includes('/pages/') || path.includes('/scripts/')) {
+        const match = path.match(/(.*)\/(pages|scripts)\//);
+        if (match) {
+            return window.location.origin + match[1] + '/';
+        }
+    }
+    
+    const pathParts = path.split('/');
+    if (pathParts[pathParts.length - 1].includes('.')) {
+        pathParts.pop();
+    }
+    return window.location.origin + pathParts.join('/') + '/';
+}
+
+let baseURL = detectBaseURL();
 
 function link(item) {
     const rootPath = baseURL.replace(window.location.origin, '');

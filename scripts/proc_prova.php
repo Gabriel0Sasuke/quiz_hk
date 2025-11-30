@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once 'caminho.php';
 require_once 'connection.php';
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
@@ -33,12 +34,12 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $stmt->execute();
     if($stmt->affected_rows > 0){
         $_SESSION['score'] = $score;
-        header("Location: ../pages/resultado_prova.php");
+        header("Location: " . $baseUrl . "pages/resultado_prova.php");
         exit();
     } else {
         $_SERVER['msg-id'] = 1;
         $_SERVER['msg-text'] = "Erro ao salvar a prova. Tente novamente.";
-        header("Location: ../pages/resultado_prova.php");
+        header("Location: " . $baseUrl . "pages/resultado_prova.php");
         exit();
     }
 }

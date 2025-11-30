@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+require_once 'caminho.php';
 require_once 'connection.php';
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $email = trim($_POST['email']);
@@ -17,18 +17,18 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $_SESSION['user_id'] = $row['id'];
             $_SESSION['message'] = "Login realizado com sucesso!";
             $_SESSION['msg_id'] = 3;
-            header("Location: ../index.php");
+            header("Location: " . $baseUrl);
             exit();
         } else {
             $_SESSION['message'] = "Senha incorreta!";
             $_SESSION['msg_id'] = 1;
-            header("Location: ../pages/login.php");
+            header("Location: " . $baseUrl . "pages/login.php");
             exit();
         }
     } else {
         $_SESSION['message'] = "Email não cadastrado!";
         $_SESSION['msg_id'] = 0;
-        header("Location: ../pages/login.php");
+        header("Location: " . $baseUrl . "pages/login.php");
         exit();
     }
 }

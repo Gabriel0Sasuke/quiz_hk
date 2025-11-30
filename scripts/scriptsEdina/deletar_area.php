@@ -1,9 +1,10 @@
 <?php
 session_start();
+require_once '../caminho.php';
 
 if(!isset($_GET['id'])){
     $_SESSION['msg_id'] = 1;
-    header("Location: ../../pages/paginasEdina/table_area.php");
+    header("Location: " . $baseUrl . "pages/paginasEdina/table_area.php");
     exit();
 }
 
@@ -24,7 +25,7 @@ try{
 }finally{
     $stmt->close();
     $conn->close();
-    header("Location: ../../pages/paginasEdina/table_area.php");
+    header("Location: " . $baseUrl . "pages/paginasEdina/table_area.php");
     exit();
 }
 ?>

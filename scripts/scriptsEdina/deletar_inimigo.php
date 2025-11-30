@@ -1,8 +1,9 @@
 <?php
 session_start();
+require_once '../caminho.php';
 if(!isset($_GET['id'])){
     $_SESSION['msg_id'] = 1;
-    header("Location: ../../pages/paginasEdina/table_inimigo.php");
+    header("Location: " . $baseUrl . "pages/paginasEdina/table_inimigo.php");
     exit();
 }else{
     require_once '../connection.php';
@@ -22,7 +23,7 @@ if(!isset($_GET['id'])){
     }finally{
         $stmt->close();
         $conn->close();
-        header("Location: ../../pages/paginasEdina/table_inimigo.php");
+        header("Location: " . $baseUrl . "pages/paginasEdina/table_inimigo.php");
         exit();
     }
 }

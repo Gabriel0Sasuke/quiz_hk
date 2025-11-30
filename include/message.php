@@ -1,5 +1,8 @@
 <?php
-$baseUrl = '/quiz_hk/';
+if (!isset($baseUrl)) {
+    $includeDir = dirname(__FILE__);
+    require_once $includeDir . '/../scripts/caminho.php';
+}
 
 if (!isset($_SESSION['message'])) {
     return;

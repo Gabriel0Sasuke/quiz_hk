@@ -1,5 +1,6 @@
 <?php
     session_start();
+    require_once '../scripts/caminho.php';
 ?>
 
 <!DOCTYPE html>
@@ -8,14 +9,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prova</title>
-    <link rel="shortcut icon" href="../assets/img/ui/logo.svg" type="image/x-icon">
-    <link rel="stylesheet" href="../assets/css/prova.css">
+    <link rel="shortcut icon" href="<?= $baseUrl ?>assets/img/ui/logo.svg" type="image/x-icon">
+    <link rel="stylesheet" href="<?= $baseUrl ?>assets/css/prova.css">
 </head>
 <body>
     <?php require_once '../include/header.php'; ?>
     <main>
         <?php if(isset($_SESSION['user_id'])) { ?>
-        <form action="../scripts/proc_prova.php" method="POST">
+        <form action="<?= $baseUrl ?>scripts/proc_prova.php" method="POST">
             <h1>Prova</h1>
             <div class="pergunta">
                 <h3>1. Qual é o gênero principal do jogo Hollow Knight, conhecido por seu vasto mapa interconectado e aquisição de habilidades?</h3>

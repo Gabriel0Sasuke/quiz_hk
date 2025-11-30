@@ -1,9 +1,10 @@
 <?php
 session_start();
+require_once 'caminho.php';
 
 if(!isset($_GET['id'])){
     $_SESSION['msg_id'] = 1;
-    header("Location: ../pages/resultado.php");
+    header("Location: " . $baseUrl . "pages/resultado.php");
     exit();
 }
 
@@ -24,7 +25,7 @@ $stmt->execute();
     }finally{
         $stmt->close();
         $conn->close();
-        header("Location: ../pages/resultado.php");
+        header("Location: " . $baseUrl . "pages/resultado.php");
         exit();
     }
 

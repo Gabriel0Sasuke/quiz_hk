@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once 'caminho.php';
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
     require_once 'connection.php';
 
@@ -20,7 +21,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 } finally {
     $stmt->close();
     $conn->close();
-    header("Location: ../pages/resultado.php");
+    header("Location: " . $baseUrl . "pages/resultado.php");
     exit();
 }
 }

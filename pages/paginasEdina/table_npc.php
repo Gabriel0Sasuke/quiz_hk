@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once '../../scripts/caminho.php';
 require_once '../../scripts/connection.php';
 
 $sql = "SELECT * FROM npcs;";
@@ -14,8 +15,8 @@ $resultados = $stmt->get_result();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NPCs</title>
-    <link rel="shortcut icon" href="../../assets/img/ui/logo.svg" type="image/x-icon">
-    <link rel="stylesheet" href="../../assets/css/tabela.css">
+    <link rel="shortcut icon" href="<?= $baseUrl ?>assets/img/ui/logo.svg" type="image/x-icon">
+    <link rel="stylesheet" href="<?= $baseUrl ?>assets/css/tabela.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
@@ -50,6 +51,7 @@ $resultados = $stmt->get_result();
     <?php require_once '../../include/footer.php'; ?>
 
     <script>
+        const baseUrl = '<?= $baseUrl ?>';
         function confirmarDelete(id){
             Swal.fire({
   title: "Tem certeza?",
@@ -62,7 +64,7 @@ $resultados = $stmt->get_result();
   cancelButtonText: "Cancelar"
 }).then((result) => {
   if (result.isConfirmed) {
-    window.location.href = "../../scripts/scriptsEdina/deletar_npc.php?id=" + id;
+    window.location.href = baseUrl + "scripts/scriptsEdina/deletar_npc.php?id=" + id;
   }
 });
         }

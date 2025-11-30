@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once '../../scripts/caminho.php';
 require_once '../../scripts/connection.php';
 
 $sql = "SELECT 
@@ -21,8 +22,8 @@ $resultados = $stmt->get_result();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amuletos e Vendedores</title>
-    <link rel="shortcut icon" href="../../assets/img/ui/logo.svg" type="image/x-icon">
-    <link rel="stylesheet" href="../../assets/css/tabela.css">
+    <link rel="shortcut icon" href="<?= $baseUrl ?>assets/img/ui/logo.svg" type="image/x-icon">
+    <link rel="stylesheet" href="<?= $baseUrl ?>assets/css/tabela.css">
 </head>
 <body>
     <?php require_once '../../include/header.php'; ?>

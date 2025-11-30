@@ -1,5 +1,6 @@
 <?php
     session_start();
+    require_once '../scripts/caminho.php';
     require_once '../scripts/connection.php';
     $aluno = $conn->query("SELECT nome, sobrenome FROM alunos WHERE id = " . (int)$_SESSION['user_id']);
     $row = $aluno ? $aluno->fetch_assoc() : null;
@@ -12,8 +13,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prova</title>
-    <link rel="shortcut icon" href="../assets/img/ui/logo.svg" type="image/x-icon">
-    <link rel="stylesheet" href="../assets/css/resultado_prova.css">
+    <link rel="shortcut icon" href="<?= $baseUrl ?>assets/img/ui/logo.svg" type="image/x-icon">
+    <link rel="stylesheet" href="<?= $baseUrl ?>assets/css/resultado_prova.css">
 </head>
 <body>
     <?php require_once '../include/header.php'; ?>
@@ -49,7 +50,7 @@
             <p class="respostas"><?php if($_SESSION['resposta10']) { echo 'Parabéns, você acertou a pergunta 10!'; }else{ echo 'você errou a pergunta 10, a Resposta Correta era a Opção D'; } ?>
             </p>
         </div>
-            <button onclick="window.location.href = '../index.php'">Retornar ao início</button>
+            <button onclick="window.location.href = '<?= $baseUrl ?>'">Retornar ao início</button>
         <?php }else { ?>
             <div id="warning">
                 Ops, erro ao salvar sua prova

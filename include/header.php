@@ -1,5 +1,8 @@
 <?php
-$baseUrl = '/quiz_hk/';
+if (!isset($baseUrl)) {
+    $includeDir = dirname(__FILE__);
+    require_once $includeDir . '/../scripts/caminho.php';
+}
 ?>
 
 <link rel="stylesheet" href="<?= $baseUrl ?>assets/css/header.css">
